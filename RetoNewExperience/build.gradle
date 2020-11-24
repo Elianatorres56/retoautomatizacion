@@ -1,36 +1,16 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'net.serenity-bdd.aggregator'
+plugins {
+    id 'java'
+}
 
+group 'co.com.prueba.youtube'
 version '1.0-SNAPSHOT'
 
-repositories {
-
-    jcenter {
-    }
-    mavenlocal()
-}
-
-buildscript {
-    repositories {
-
-        jcenter {
-
-        }
-
-    }
-    dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:2.0.60")
-    }
-}
-
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'net.serenity-bdd.aggregator'
-
 sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
 
 dependencies {
     compile group: 'net.serenity-bdd', name: 'serenity-core', version:'2.0.60'
@@ -41,9 +21,3 @@ dependencies {
     testCompile group: 'net.serenity-bdd', name: 'serenity-junit', version:'2.0.60'
 
 }
-
-tasks.withType(Test){
-    systemProperties = System.properties
-}
-
-gradle.startParameter.continueOnFailure = true
